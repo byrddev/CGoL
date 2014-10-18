@@ -25,5 +25,5 @@ for i_gen = 1:1000
 end
 
 # at the command prompt of where the files are stored
-# ffmpeg -r 15 -f image2 -s 800x600 -i gen%d.png -vcodec libx264 -crf 20 test.mp4
+# ffmpeg -r 15 -f image2 -s 800x600 -i gen%d.png -vcodec libx264 -crf 20 CGoL.mp4
 ```
