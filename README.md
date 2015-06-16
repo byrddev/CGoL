@@ -1,29 +1,10 @@
 CGoL
 ====
 
-A simple Conway's Game of Life written in Julia and implemented in IJulia
+A simple Conway's Game of Life written in Julia and also implemented in IJulia
 
-```
-# set up 2D array filled with random 1 and zeros
-GoL = randbool(100,100)
-using PyPlot
-gray()
-imgplot = plt.imshow(GoL, interpolation="none")
-Mfilt = [true true  true; true  false  true; true true true]
-for i_gen = 1:1000
-    convGoL = conv2(GoL, Mfilt)
+Run: After cloning, be sure to create a folder where the pictures will be placed, ./GoLpics, or change the location where the files are to be placed in the savefig command.
 
-    lives2 = convGoL .== 2
-    lives3 = convGoL .== 3
- 
-    twoLiveNeig =    (GoL & lives2[2:end-1,2:end-1]) 
-    threeLiveNeig =  (GoL & lives3[2:end-1,2:end-1])  
-    reproduce =     (~GoL & lives3[2:end-1,2:end-1])
-    GoL = twoLiveNeig | threeLiveNeig | reproduce
-    imgplot = plt.imshow(GoL, interpolation="none")
-    plt.savefig("GoLpics/gen$i_gen.png")
-end
+There is a dependency on ffmpeg being installed to create the video. otherwise you can open the png's real quick in sucession and get a flip book type of animation.
 
-# at the command prompt of where the files are stored
-# ffmpeg -r 15 -f image2 -s 800x600 -i gen%d.png -vcodec libx264 -crf 20 CGoL.mp4
-```
+Feel free to contact me with any questions.
